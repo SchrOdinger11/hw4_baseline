@@ -75,6 +75,8 @@ public class ExpenseTrackerModel {
    * @return If the listener is non-null and not already registered,
    *         returns true. If not, returns false.
    */   
+
+	//if the listener not in the arraylist add it .
   public boolean register(ExpenseTrackerModelListener listener) {
       // For the Observable class, this is one of the methods.
       //
@@ -85,14 +87,14 @@ public class ExpenseTrackerModel {
       }
       return false;
   }
-
+//simply calculates the size of the checkListener arraylist
   public int numberOfListeners() {
       // For testing, this is one of the methods.
       //
       
      return checkListener.size();
   }
-
+//check if the listener is present , by checking if the item is there in the arrayList
   public boolean containsListener(ExpenseTrackerModelListener listener) {
       // For testing, this is one of the methods.
       //
@@ -102,7 +104,7 @@ public class ExpenseTrackerModel {
       }
       return false;
   }
-
+//state changes occur here
   protected void stateChanged() {
       // For the Observable class, this is one of the methods.
       //
