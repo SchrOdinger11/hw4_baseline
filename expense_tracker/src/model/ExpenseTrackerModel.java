@@ -24,16 +24,19 @@ public class ExpenseTrackerModel {
     // Perform input validation to guarantee that all transactions added are non-null.
     if (t == null) {
       throw new IllegalArgumentException("The new transaction must be non-null.");
+      
     }
     transactions.add(t);
     // The previous filter is no longer valid.
     matchedFilterIndices.clear();
+    this.stateChanged();
   }
 
   public void removeTransaction(Transaction t) {
     transactions.remove(t);
     // The previous filter is no longer valid.
     matchedFilterIndices.clear();
+    this.stateChanged();
   }
 
   public List<Transaction> getTransactions() {
@@ -54,6 +57,7 @@ public class ExpenseTrackerModel {
       // For encapsulation, copy in the input list 
       this.matchedFilterIndices.clear();
       this.matchedFilterIndices.addAll(newMatchedFilterIndices);
+      this.stateChanged();
   }
 
   public List<Integer> getMatchedFilterIndices() {
@@ -76,6 +80,7 @@ public class ExpenseTrackerModel {
       //
       
       if(!this.containsListener(listener) || listener!=null){
+        checkListener.add(listener);
         return true;
       }
       return false;
